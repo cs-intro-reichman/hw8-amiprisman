@@ -148,7 +148,7 @@ public class Network {
         return count;
     }
    public String toString() {
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder("Network:\n");
     for (int i = 0; i < userCount; i++) {
         if (users[i] != null) {
             sb.append(users[i].getName()).append(" -> ");
@@ -160,9 +160,9 @@ public class Network {
                     sb.append(", ");
                 }
             }
-            sb.append("\n");
+            sb.append(" \n"); // Append a trailing space and newline
         }
     }
-    return sb.toString();
+    return sb.toString().trim(); // Trim trailing newline for exact match
 }
 }
