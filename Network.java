@@ -6,6 +6,14 @@ public class Network {
     private User[] users;  // the users in this network (an array of User objects)
     private int userCount; // actual number of users in this network
 
+   public int getUserCount() {
+        return this.userCount;
+    }
+
+
+   
+   
+   
     /** Creates a network with a given maximum number of users. */
     public Network(int maxUserCount) {
         this.users = new User[maxUserCount];
