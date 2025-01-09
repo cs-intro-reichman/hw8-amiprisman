@@ -34,31 +34,30 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-       for ( int i = 0; i < userCount; i++){
-        if (users[i] != null && users[i].getName().equals(name)) {
+    for (int i = 0; i < userCount; i++) {
+        if (users[i] != null && users[i].getName().equalsIgnoreCase(name)) {
             return users[i];
-       }
-        
+        }
     }
-     return null;
-    }
+    return null;
+}
     /** Adds a new user with the given name to this network.
     *  If ths network is full, does nothing and returns false;
     *  If the given name is already a user in this network, does nothing and returns false;
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
-       if (userCount == 1000){
+    if (userCount >= users.length) { 
         return false;
-       }
-       for (int i = 0; i < userCount; i++){
-        if (users[i] != null && users[i].getName().equals(name)) {
-            return false;
+    }
+    for (int i = 0; i < userCount; i++) {
+        if (users[i] != null && users[i].getName().equalsIgnoreCase(name)) {
+            return false; 
         }
-        }
-       users[userCount] = new User(name); 
-        userCount++; 
-        return true;
-       }
+    }
+    users[userCount] = new User(name); 
+    userCount++;
+    return true;
+}
        
     
 
@@ -71,7 +70,9 @@ public class Network {
         if (first == null || second == null) {
         return false;}
         
-        
+        if (name1.equalsIgnoreCase(name2)) {
+        return false;
+    }
         
         return first.addFollowee(name2); 
     }
